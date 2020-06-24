@@ -13,10 +13,11 @@ onPageLoad(sink => {
 
 let publicPayload = ''
 
+const keyPrefix = 'METEOR_PUBLIC_'
 function cachePublicEnv() {
   const data = []
-  Object.keys(process.env).filter(k => k.startsWith('METEOR_PUBLIC_')).forEach(key => {
-    data.push([key, process.env[key]])
+  Object.keys(process.env).filter(k => k.startsWith(keyPrefix)).forEach(key => {
+    data.push([key.replace(keyPrefix, ''), process.env[key]])
   })
   publicPayload = JSON.stringify(data)
 }
