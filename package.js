@@ -13,7 +13,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.9');
   api.use('ecmascript');
-  api.mainModule('meteor-public-env.js');
+  api.mainModule('meteor-public-env.js', 'server');
 });
 
 Package.onTest(function(api) {
