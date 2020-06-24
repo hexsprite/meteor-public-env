@@ -2,7 +2,7 @@ Package.describe({
   name: 'hexsprite:public-env',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: '',
+  summary: 'Expose public environment variables in Meteor.settings.public',
   // URL to the Git repository containing the source code for this package.
   git: '',
   // By default, Meteor will default to using README.md for documentation.
@@ -19,6 +19,6 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('meteor-public-env');
+  api.use('hexsprite:public-env');
   api.mainModule('meteor-public-env-tests.js');
 });
