@@ -1,6 +1,6 @@
 Package.describe({
   name: 'hexsprite:public-env',
-  version: '0.0.2',
+  version: '0.0.3',
   // Brief, one-line summary of the package.
   summary: 'Expose public environment variables in Meteor.settings.public',
   // URL to the Git repository containing the source code for this package.
@@ -13,7 +13,8 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.9');
   api.use('ecmascript');
-  api.mainModule('meteor-public-env.js', 'server');
+  api.mainModule('server.js', 'server');
+  api.mainModule('client.js', 'client');
 });
 
 Package.onTest(function(api) {

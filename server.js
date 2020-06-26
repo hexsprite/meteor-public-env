@@ -4,9 +4,6 @@ onPageLoad(sink => {
   sink.appendToBody(`
 <script>
   window.__meteor_public_env = ${publicPayload};
-  window.setTimeout(() => {
-    window.__meteor_public_env.forEach(v => Meteor.settings.public[v[0]] = v[1])
-  }, 0)
 </script>
 `)
 })
