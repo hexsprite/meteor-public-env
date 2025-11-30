@@ -1,6 +1,6 @@
 Package.describe({
   name: 'hexsprite:public-env',
-  version: '1.0.0',
+  version: '1.0.1',
   summary: 'Expose METEOR_PUBLIC_* env vars to client as process.env (Next.js style)',
   git: 'https://github.com/hexsprite/meteor-public-env',
   documentation: 'README.md',
@@ -10,7 +10,7 @@ Package.onUse(function (api) {
   api.versionsFrom(['2.0', '3.0'])
   api.use('ecmascript')
   api.use('typescript')
-  api.use('server-render')
+  api.use('server-render', 'server')
   api.mainModule('server.ts', 'server')
   api.mainModule('client.ts', 'client')
 })
