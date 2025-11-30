@@ -1,25 +1,26 @@
 Package.describe({
   name: 'hexsprite:public-env',
-  version: '0.0.4',
-  // Brief, one-line summary of the package.
-  summary: 'Expose public environment variables in Meteor.settings.public',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
-  documentation: 'README.md'
-});
+  version: '1.0.0',
+  summary: 'Expose METEOR_PUBLIC_* env vars to client as process.env (Next.js style)',
+  git: 'https://github.com/hexsprite/meteor-public-env',
+  documentation: 'README.md',
+})
 
-Package.onUse(function(api) {
-  api.versionsFrom('1.9');
-  api.use('ecmascript');
-  api.mainModule('server.js', 'server');
-  api.mainModule('client.js', 'client');
-});
+Package.onUse(function (api) {
+  api.versionsFrom(['2.0', '3.0'])
+  api.use('ecmascript')
+  api.use('typescript')
+  api.use('server-render')
+  api.mainModule('server.ts', 'server')
+  api.mainModule('client.ts', 'client')
+})
 
-Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('hexsprite:public-env');
-  api.mainModule('meteor-public-env-tests.js');
-});
+Package.onTest(function (api) {
+  api.use('ecmascript')
+  api.use('typescript')
+  api.use('tinytest')
+  api.use('hexsprite:public-env')
+  // test-fixtures.ts sets up env vars, must load before server.ts
+  api.addFiles('test-fixtures.ts', 'server')
+  api.mainModule('tests.ts')
+})
